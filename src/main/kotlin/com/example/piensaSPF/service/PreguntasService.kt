@@ -19,11 +19,8 @@ class PreguntasService {
     fun save (preguntas:Preguntas):Preguntas{
         return preguntasRepository.save(preguntas)
     }
-    fun list (pageable: Pageable, preguntas: Preguntas):Page<Preguntas>{
-        val matcher = ExampleMatcher.matching()
-            .withIgnoreNullValues()
-            .withMatcher(("descripcion"), ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase())
-        return preguntasRepository.findAll(Example.of(preguntas, matcher), pageable)
+    fun list ():List<Preguntas>{
+        return preguntasRepository.findAll()
     }
 
     fun listById (id: Long?): Preguntas?{

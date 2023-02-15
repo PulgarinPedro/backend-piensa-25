@@ -2,7 +2,6 @@ package com.example.piensaSPF.controller
 
 import com.example.piensaSPF.model.Detail
 import com.example.piensaSPF.service.DetailService
-import com.example.piensaSPF.service.EvaluacionService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity

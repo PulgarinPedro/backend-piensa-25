@@ -1,7 +1,9 @@
 package com.example.piensaSPF.service
 
 import com.example.piensaSPF.model.Evaluacion
+import com.example.piensaSPF.model.EvaluacionView
 import com.example.piensaSPF.repository.EvaluacionRepository
+import com.example.piensaSPF.repository.EvaluacionViewRepository
 import com.example.piensaSPF.repository.UsuarioRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -13,6 +15,8 @@ import org.springframework.web.server.ResponseStatusException
 class EvaluacionService {
     @Autowired
     lateinit var evaluacionRepository: EvaluacionRepository
+    @Autowired
+    lateinit var evaluacionViewRepository: EvaluacionViewRepository
     @Autowired
     lateinit var usuarioRepository: UsuarioRepository
 
@@ -34,6 +38,9 @@ class EvaluacionService {
         return evaluacionRepository.findAll()
     }
 
+    fun listUser ():List<EvaluacionView>{
+        return evaluacionViewRepository.findAll()
+    }
     fun update(evaluacion:Evaluacion):Evaluacion{
         try {
             evaluacionRepository.findById(evaluacion.id)

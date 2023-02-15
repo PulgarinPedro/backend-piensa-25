@@ -18,6 +18,10 @@ class UsuarioService {
     fun list ():List<Usuario>{
         return usuarioRepository.findAll()
     }
+    fun listById (id: Long?): Usuario?{
+        return  usuarioRepository.findById(id)
+    }
+
     fun update(usuario:Usuario):Usuario{
         try {
             usuarioRepository.findById(usuario.id)
@@ -42,5 +46,12 @@ class UsuarioService {
         catch (ex:Exception){
             throw ResponseStatusException(HttpStatus.NOT_FOUND,ex.message)
         }
+    }
+
+    fun delete (id: Long?):Boolean?{
+        usuarioRepository.findById(id) ?:
+        throw  Exception()
+        usuarioRepository.deleteById(id!!)
+        return true
     }
 }
